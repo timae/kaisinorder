@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lunch Organiser</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div>
+        <h1>Lunch organiser <span>·</span> Kaisin</h1>
+        <p class="sub">Open a round, share the link, finalize and send the form to info@kaisin.ch.</p>
+      </div>
+      <div class="row">
+        <a href="/" class="hint">Order page</a>
+        <button type="button" class="ghost" id="logout" hidden>Log out</button>
+      </div>
+    </header>
+
+    <section class="card" id="login" hidden style="max-width:420px">
+      <h2>Organiser login</h2>
+      <form id="loginForm" class="row">
+        <input type="password" id="password" class="grow" placeholder="Admin password" autocomplete="current-password" required>
+        <button class="primary" type="submit">Log in</button>
+      </form>
+      <p class="notice err" id="loginErr" hidden style="margin:12px 0 0"></p>
+    </section>
+
+    <div class="admin-layout" id="app" hidden>
+      <aside>
+        <section class="card">
+          <h2>New lunch round</h2>
+          <form id="newRound">
+            <label class="field" for="nr-title">Title</label>
+            <input type="text" id="nr-title" placeholder="Team lunch" maxlength="120">
+            <div class="row" style="margin-top:10px">
+              <div class="grow" style="flex-basis:120px">
+                <label class="field" for="nr-date">Delivery date</label>
+                <input type="date" id="nr-date" required>
+              </div>
+              <div style="flex:0 0 100px">
+                <label class="field" for="nr-time">Time</label>
+                <input type="time" id="nr-time" value="12:00">
+              </div>
+            </div>
+            <label class="field" for="nr-deadline" style="margin-top:10px">Order deadline <span class="hint">optional</span></label>
+            <input type="datetime-local" id="nr-deadline">
+            <button class="primary" type="submit" style="margin-top:14px;width:100%;justify-content:center">Open round</button>
+          </form>
+        </section>
+        <section class="card">
+          <h2>Rounds</h2>
+          <nav class="rounds" id="rounds"></nav>
+        </section>
+      </aside>
+
+      <main id="detail">
+        <div class="card empty">Select or create a lunch round.</div>
+      </main>
+    </div>
+  </div>
+  <script src="/admin.js"></script>
+</body>
+</html>

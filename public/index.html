@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Team Lunch Order</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div>
+        <h1>Team lunch <span>·</span> Kaisin</h1>
+        <p class="sub" id="roundInfo">Loading…</p>
+      </div>
+      <a href="/admin" class="hint">Organiser</a>
+    </header>
+
+    <div id="picker" class="card" hidden>
+      <h2>Pick a lunch</h2>
+      <div id="pickerList" class="rounds"></div>
+    </div>
+
+    <div id="none" class="card empty" hidden>No lunch round is open right now. Check back later.</div>
+
+    <main id="main" hidden>
+      <div id="closed" class="notice warn" hidden>Ordering for this lunch is closed. Ask the organiser if you need a change.</div>
+
+      <section class="card" id="orderCard">
+        <div class="row" style="align-items:flex-end">
+          <div class="grow">
+            <label class="field" for="person">Your name</label>
+            <input type="text" id="person" maxlength="60" placeholder="e.g. Anna M." autocomplete="name">
+          </div>
+          <div>
+            <label class="field">Size</label>
+            <div class="seg" id="size">
+              <button type="button" data-size="regular" aria-pressed="true">Regular</button>
+              <button type="button" data-size="large" aria-pressed="false">Large</button>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:20px">
+          <div class="tabs" role="tablist">
+            <button type="button" role="tab" data-tab="signature" aria-selected="true">Signature bowls</button>
+            <button type="button" role="tab" data-tab="custom" aria-selected="false">Create your own</button>
+          </div>
+        </div>
+
+        <div id="tab-signature">
+          <div class="grid" id="sigGrid"></div>
+        </div>
+
+        <div id="tab-custom" hidden>
+          <h3>Protein</h3><div class="chips" id="c-protein"></div>
+          <h3>Base</h3><div class="chips" id="c-base"></div>
+          <h3>Toppings <span class="hint" id="h-toppings">up to 4</span></h3><div class="chips" id="c-toppings"></div>
+          <h3>Sauce</h3><div class="chips" id="c-sauce"></div>
+          <h3>Finish <span class="hint" id="h-finishes">up to 2</span></h3><div class="chips" id="c-finishes"></div>
+        </div>
+
+        <h3>Note for the organiser <span class="hint">optional, e.g. allergies</span></h3>
+        <input type="text" id="note" maxlength="200" placeholder="">
+      </section>
+
+      <section class="card">
+        <h2>Orders so far <span class="badge" id="count">0</span></h2>
+        <ul class="list" id="orders"></ul>
+      </section>
+    </main>
+  </div>
+
+  <div class="bar" id="bar" hidden>
+    <div class="inner">
+      <div class="what"><strong id="barWhat">Choose a bowl</strong><span id="barPrice"></span></div>
+      <button type="button" class="ghost" id="cancelEdit" hidden>Cancel edit</button>
+      <button type="button" class="primary" id="submit">Place order</button>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
